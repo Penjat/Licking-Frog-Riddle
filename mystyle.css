@@ -1,0 +1,33 @@
+.statBar{
+  height: 20px;
+  background-color: blue;
+  margin:10px;
+
+}
+#surviveRightBar{
+  background-color: green;
+}
+#surviveLeftBar{
+  background-color: orange;
+}
+
+#simulation{
+  border-width: 10px;
+  border-color: black;
+  border-style: solid;
+  min-height: 200px;
+}
+#gameSpace{
+  border-width: 10px;
+  border-color: black;
+  border-style: solid;
+  min-height: 200px;
+}
+#data{
+  border-width: 10px;
+  border-color: black;
+  border-style: solid;
+}
+#container{
+  width:100%;
+}

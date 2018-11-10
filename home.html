@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="simulation.js"> </script>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+</head>
+<body>
+  <h1>Licking Frog Riddle</h1>
+  <table id="container">
+    <tr>
+      <td>
+        <div id="gameSpace">
+          <button type="button" onclick="">Try the challange yourself</button>
+        </div>
+      </td>
+      <td width="20%">
+        <div id=simulation>
+          <h2>Run Simulation</h2>
+          <button type="button" onclick="runSimulation(1)">1 time</button>
+          <button type="button" onclick="runSimulation(5)">5 times</button>
+          <button type="button" onclick="runSimulation(10)">10 times</button>
+          <button type="button" onclick="runSimulation(100)">100 times</button>
+          <button type="button" onclick="runSimulation(1000)">1000 times</button>
+        </div>
+      </td>
+    </tr>
+
+  </table>
+
+
+  <div id="data">
+    <h2>Statistics</h2>
+
+    <div id="dataCon">
+      <p>try the challange or run some simulations to generate data</p>
+    </div>
+
+    <button type="button" onclick="resetAllData()">reset all data</button>
+  </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
