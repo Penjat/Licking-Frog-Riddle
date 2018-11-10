@@ -15,6 +15,8 @@ var surviveRight = 0;
 
 function simulate(){
   console.log("simulating...");
+  //reset game to make sure there aren't conflicts
+  document.getElementById("gameSpace").innerHTML = '<button type="button" onclick="startGame()">Try the challange yourself</button>';
   generateFrogs();
 
   totalNumSimulations++;
@@ -71,6 +73,49 @@ function updateData(){
   document.getElementById("surviveLeftBar").style.width = "" + percentLeft + "%";
   document.getElementById("surviveRightBar").style.width = "" + percentRight + "%";
 }
+function startGame(){
+  document.getElementById("gameSpace").innerHTML = '<p>You have been poisoned! <p>it turns out the only cure is to lick a certain kind of jungle frog but only the females of this species posses the cure. <p>To your left you see a frog, you are not sure if it is male or female. <p>Suddenly, you hear the croak of a male frog, to your right you see two frogs.  One must be male but the other you arent sure...<button type="button" onclick="next()">next</button>';
+}
+function next(){
+  generateFrogs();
+  document.getElementById("gameSpace").innerHTML = 'what do you do? <button type="button" onclick="lickFrog(0)">Lick the frog on the left.</button> <button type="button" onclick="lickFrog(1)">Lick both the frogs on the right (one of which you know is male)</button>'
+
+}
+function lickFrog(direction){
+  var message;
+
+  //left
+  if(direction == 0){
+    message = "you quickly run to the left and lick the frog.";
+    if(frogL == FEMALE){
+      message += " Luckly for you this frog turns out to be female and you are cured of the poison.";
+    }else{
+      message += " Unfortunatly it seems this was a male frog and did not posses the required antidote.  You fall on the ground as all turns to darkness.";
+    }
+  }
+  //right
+  if(direction == 1){
+    message = "You run towards the right. Two frogs must be better than one right? you lick both the frogs.";
+    if(frogR1 == FEMALE || frogR2 == FEMALE){
+      message += "it seems at least one of them was female and you feel better in no time.";
+    }else{
+      message += "unfortunatly, it seems that both these frogs were male and your vision starts to go dark.  As you pass from this world you take solice in the fact that you made the most statistically reasonable choice.";
+    }
+  }
+  message += '<button type="button" onclick="startGame()">try again?</button>';
+  document.getElementById("gameSpace").innerHTML = message;
+
+  totalNumSimulations++;
+
+  if(frogL == FEMALE){
+    surviveLeft++;
+  }
+  if(frogR1 == FEMALE || frogR2 == FEMALE){
+    surviveRight++;
+  }
+  updateData();
+
+}
 function resetAllData(){
 
   totalNumSimulations = 0;
@@ -79,4 +124,5 @@ function resetAllData(){
   surviveRight = 0;
 
   document.getElementById("dataCon").innerHTML = '<p>try the challange or run some simulations to generate data</p>';
+  document.getElementById("gameSpace").innerHTML = '<button type="button" onclick="startGame()">Try the challange yourself</button>';
 }
